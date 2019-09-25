@@ -1,13 +1,14 @@
 //#full-example
 package com.example
 
-import akka.actor.{ Actor, ActorLogging, ActorRef, ActorSystem, Props }
+import akka.actor.{Actor, ActorLogging, ActorRef, ActorSystem, Props}
 
 //#greeter-companion
 //#greeter-messages
 object Greeter {
   //#greeter-messages
-  def props(message: String, printerActor: ActorRef): Props = Props(new Greeter(message, printerActor))
+  def props(message: String, printerActor: ActorRef): Props =
+    Props(new Greeter(message, printerActor))
   //#greeter-messages
   final case class WhoToGreet(who: String)
   case object Greet
@@ -25,10 +26,10 @@ class Greeter(message: String, printerActor: ActorRef) extends Actor {
   def receive = {
     case WhoToGreet(who) =>
       greeting = message + ", " + who
-    case Greet           =>
+    case Greet =>
       //#greeter-send-message
       printerActor ! Greeting(greeting)
-      //#greeter-send-message
+    //#greeter-send-message
   }
 }
 //#greeter-actor

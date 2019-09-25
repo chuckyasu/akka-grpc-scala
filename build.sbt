@@ -1,4 +1,4 @@
-name := "akka-grapc-scala"
+name := "akka-grpc-scala"
 
 version := "1.0"
 
